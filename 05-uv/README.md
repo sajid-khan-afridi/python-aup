@@ -50,6 +50,24 @@ UV is a next-generation Python package manager that integrates the core function
 ## **UV Documentation and Explanation**
 
 ### 1. Checking UV Commands and Version
+1. **Installation**:
+
+- with `Powershell` on Windows (make sure you run Powershell with administrator privileges):
+```bash
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+- with `cmd` A PIP install is supported but it is not recommended:
+```bash
+pip install uv
+```
+
+- Afterward, you can verify the installation by running uv version:
+```bash
+uv version
+```
+
+
 
 1. **uv help**
 
