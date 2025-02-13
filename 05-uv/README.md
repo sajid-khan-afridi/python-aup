@@ -285,6 +285,85 @@ A new directory called `my_project` is created. Inside, you’ll find files like
 
 ---
 
+
+### Initializing a New Project as a Package
+
+When you run:
+
+```bash
+uv init
+```
+
+uv creates a new project using a default “application” template. This usually sets up a basic project with files such as a `pyproject.toml`, a README, and a starter Python file (for example, `hello.py`).
+
+However, if you want to create a **Python package**—for example, when you’re building a library that you plan to distribute—you can use the `--package` flag. This flag tells uv to set up the project with packaging in mind.
+
+#### Command with the `--package` Flag
+
+```bash
+uv init --package .
+```
+
+##### What Does This Mean?
+
+- **`--package`**: Instructs uv to configure the project as a Python package (library) rather than an application.
+- **`.`**: The dot means “the current directory.” So uv will initialize the current folder as your package project.
+
+##### Example Walkthrough
+
+1. **Open Your Terminal and Navigate to Your Project Folder**
+
+   If you already have a folder for your project (or you want to initialize the current folder), open your terminal and change to that directory:
+
+   ```bash
+   cd path/to/my_library
+   ```
+
+2. **Initialize the Package Project**
+
+   Run the following command:
+
+   ```bash
+   uv init --package .
+   ```
+
+   *What happens:*  
+   - uv will look in the current directory (indicated by the dot) and create the necessary files to set up your project as a Python package.
+   - It creates a `pyproject.toml` file with configuration suited for a package. For example, it might include sections for package metadata and a `[build-system]` section for building the package.
+   - It may also create a default directory structure (for example, a `src/` folder or a folder with the same name as your package) to hold your Python modules.
+
+3. **Check the Generated Files**
+
+   After the command finishes, you might see a structure similar to this:
+
+   ```
+   my_library/
+   ├── pyproject.toml    # Contains your package metadata and build system config.
+   ├── README.md         # A starter README file.
+   ├── src/
+   │   └── my_library/   # Your package directory where you can add your modules.
+   └── .venv             # (Created later when you sync or use uv run)
+   ```
+
+##### Why Use `--package`?
+
+- **For Libraries:**  
+  If you plan to build a library that others can install (via PyPI, for instance), initializing as a package ensures your project is set up with the correct file structure and metadata.
+- **Consistent Build Process:**  
+  It creates a configuration that works well with tools like uv’s build commands, making it easier to create source distributions and wheels later.
+- **Avoiding Confusion:**  
+  Using `uv init --package .` makes your intention clear—it tells both uv and other developers that this project is meant to be a distributable package rather than a stand-alone application.
+
+---
+
+### Summary
+
+- **`uv init`** creates a basic project (often an application template).
+- **`uv init --package .`** initializes the current directory as a package project—ideal for building libraries.
+- The dot (`.`) tells uv to work in the current folder.
+
+---
+
 ### 2. Adding Dependencies
 
 **Command:** `uv add`
